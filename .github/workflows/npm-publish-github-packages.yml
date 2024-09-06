@@ -41,7 +41,6 @@
 #         env:
 #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-
 name: Deploy React App to GitHub Pages
 
 on:
@@ -53,12 +52,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE20: true  # Force Node.js 20 usage
+
     steps:
       - name: Checkout the code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3  # Use v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v3  # Use Node.js 20
         with:
           node-version: '20'
 
