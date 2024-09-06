@@ -110,12 +110,7 @@ jobs:
       - name: Build the React app
         run: npm run build
 
-      - name: Set Git user name and email
-        run: |
-          git config --global user.name "Shmmi"
-          git config --global user.email "shameel2050@gmail.com"
-
-      - name: Deploy to GitHub Pages
-        run: npm run deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build # The folder the action should deploy.
