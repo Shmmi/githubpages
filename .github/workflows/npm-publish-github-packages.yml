@@ -84,13 +84,16 @@ on:
   push:
     branches:
       - main
+      
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    env:
-      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true  # Temporarily allow Node.js 16 usage
+  
 
     steps:
       - name: Checkout the code
