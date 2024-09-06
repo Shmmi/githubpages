@@ -41,6 +41,43 @@
 #         env:
 #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+
+
+# name: Deploy React App to GitHub Pages
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     env:
+#       FORCE_JAVASCRIPT_ACTIONS_TO_NODE20: true  # Force Node.js 20 usage
+
+#     steps:
+#       - name: Checkout the code
+#         uses: actions/checkout@v3  # Use v3
+
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v3  # Use Node.js 20
+#         with:
+#           node-version: '20'
+
+#       - name: Install dependencies
+#         run: npm install
+
+#       - name: Build the React app
+#         run: npm run build
+
+#       - name: Deploy to GitHub Pages
+#         run: npm run deploy
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
 name: Deploy React App to GitHub Pages
 
 on:
@@ -53,16 +90,16 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE20: true  # Force Node.js 20 usage
+      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true  # Temporarily allow Node.js 16 usage
 
     steps:
       - name: Checkout the code
-        uses: actions/checkout@v3  # Use v3
+        uses: actions/checkout@v2
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3  # Use Node.js 20
+        uses: actions/setup-node@v2
         with:
-          node-version: '20'
+          node-version: '16'
 
       - name: Install dependencies
         run: npm install
